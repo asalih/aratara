@@ -78,7 +78,7 @@ func main() {
 
 func listenForInterrupt(stopScan chan os.Signal) {
 	<-stopScan
-	fmt.Println("halting gitleaks scan")
+	fmt.Println("halting scan")
 	os.Exit(1)
 }
 
