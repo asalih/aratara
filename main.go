@@ -44,7 +44,7 @@ func main() {
 	parsedIps := ParseIPAddresses(path)
 	dataLength := len(parsedIps)
 
-	log.Println("Total IP Address: " + strconv.Itoa(dataLength))
+	log.Println("Total IP Address Count: " + strconv.Itoa(dataLength))
 
 	var wg sync.WaitGroup
 	wg.Add(dataLength)
@@ -125,10 +125,9 @@ func doRequest(addr string, origin string, fp string) {
 
 			if re.Match(bodyBytes) {
 				log.Println("FINGERPRINT MATCH: " + strconv.Itoa(res.StatusCode) + " " + origin)
-				return
 			}
+		} else {
+			log.Println("Status Code is: " + strconv.Itoa(res.StatusCode) + " " + origin)
 		}
-
-		//log.Println("Status Code is: " + strconv.Itoa(res.StatusCode) + " " + origin)
 	}
 }
